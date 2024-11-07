@@ -13,9 +13,12 @@
   }
 }
 
+/* App.css */
+
 .App-header {
+  text-align: center;
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +27,33 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.seccin-comics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  background-image: url('../src/componentes/imagenes/fondo.jpg');
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.seccin-comics div {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  transform: scale(0.9);
+}
+
+.seccin-comics img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.fav-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.fav-button.active {
+  color: red;
 }
