@@ -6,6 +6,7 @@ import md5 from 'md5';
 function App() {
   const [comics, setComics] = useState([]);
   const [selectedOption, setSelectedOption] = useState('all');
+  const [selectedComic, setSelectedComic] = useState(null);
   const publicKey = 'b7108e93f592d7562af350a0b288893e';
   const privateKey = '6b7fc9eff7a08e31abccadc9c2e1db7189c46f69';
   const ts = 1; // Usamos un timestamp fijo para este ejemplo
@@ -37,6 +38,10 @@ function App() {
     );
   };
 
+  const handleComicClick = (comic) => {
+    setSelectedComic(comic);
+  };
+
   const filteredComics = selectedOption === 'favorites' ? comics.filter(comic => comic.isFavorite) : comics;
 
   return (
@@ -51,18 +56,33 @@ function App() {
 
       <div className='seccin-comics'>
         {filteredComics.map(comic => (
-          <div key={comic.id}>
+          <div key={comic.id} onClick={() => handleComicClick(comic)}>
             <h3>{comic.title}</h3>
             <img src={comic.thumbnail.path + '.' + comic.thumbnail.extension} alt={comic.title} />
-            <button onClick={() => handleFavoriteToggle(comic.id)}>
+            <button onClick={(e) => { e.stopPropagation(); handleFavoriteToggle(comic.id); }}>
               {comic.isFavorite ? 'Quitar de Favoritos' : 'Añadir a Favoritos'}
             </button>
           </div>
         ))}
       </div>
+
+      {selectedComic && (
+        <div className='comic-detail'>
+          <div className='comic-detail-image'>
+            <img src={selectedComic.thumbnail.path + '.' + selectedComic.thumbnail.extension} alt={selectedComic.title} />
+          </div>
+          <div className='comic-detail-info'>
+            <h3>{selectedComic.title}</h3>
+            <p><strong>Resource URI:</strong> <span className='comic-resource-uri'>{selectedComic.resourceURI}</span></p>
+            <p><strong>Name:</strong> <span className='comic-name'>{selectedComic.title}</span></p>
+            <p><strong>Date Type:</strong> <span className='comic-date-type'>{selectedComic.dates[0].type}</span></p>
+            <p><strong>Date:</strong> <span className='comic-date'>{selectedComic.dates[0].date}</span></p>
+            <p><strong>Price:</strong> <span className='comic-price'>{selectedComic.prices[0].price}</span></p>
+          </div>
+        </div>
+      )}
     </div>
   );
-
 }
 
 export default App;

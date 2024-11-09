@@ -14,46 +14,72 @@
 }
 
 /* App.css */
-
 .App-header {
-  text-align: center;
   background-color: #282c34;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  color:black;
+  text-align: center;
 }
-
 .seccin-comics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
-  background-image: url('../src/componentes/imagenes/fondo.jpg');
+  background-image: url(../src/componentes/imagenes/fondo.jpg);
 }
-
 .seccin-comics div {
-  background-color: #f0f0f0;
+  border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
   text-align: center;
-  transform: scale(0.9);
+  background-color: #282c34;
+  transition: transform 0.2s;
+  width: calc(33.33% - 40px); /* Ajusta el tamaño de las tarjetas para que quepan 3 por fila */
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
 }
 
 .seccin-comics img {
-  max-width: 100%;
-  border-radius: 5px;
+  width: 90%; /* Ajusta el tamaño de la imagen para que sea un poco más pequeña */
+  height: auto;
+  margin: 0 auto; /* Centra la imagen dentro de la tarjeta */
 }
 
-.fav-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+.seccin-comics .favoritos-btn {
+  margin-top: 10px; /* Añade un margen superior para separar el botón de la imagen */
 }
 
-.fav-button.active {
-  color: red;
+.comic-detail {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-image: url('../src/componentes/imagenes/fondo_inferios.jpg'); /* Añade la imagen de fondo */
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+  background-position: center; /* Centra la imagen de fondo */
+  color: #fff; /* Cambia el color del texto para que sea legible sobre la imagen de fondo */
+}
+
+.comic-detail-image {
+  max-width: 150px;
+  margin-right: 20px;
+}
+
+.comic-detail-info {
+  flex: 1;
+  text-align: right; /* Alinea el texto a la derecha */
+}
+
+.comic-detail-info h3 {
+  margin-top: 0;
+}
+
+.comic-detail-info p {
+  margin: 10px 0 0;
+}
+
+.comic-detail-info p strong {
+  font-weight: bold;
 }
