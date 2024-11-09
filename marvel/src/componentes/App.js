@@ -9,7 +9,7 @@ function App() {
   const [selectedComic, setSelectedComic] = useState(null);
   const publicKey = 'b7108e93f592d7562af350a0b288893e';
   const privateKey = '6b7fc9eff7a08e31abccadc9c2e1db7189c46f69';
-  const ts = 1; // Usamos un timestamp fijo para este ejemplo
+  const ts = 1; //no se que hace esto, copilot me auto completó y me puso esto :)
   const hash = md5(ts + privateKey + publicKey);
 
   useEffect(() => {
